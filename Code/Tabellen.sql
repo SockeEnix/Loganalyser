@@ -18,11 +18,11 @@ FOREIGN KEY (MA_key) References mailart(MA_key));
 
 CREATE TABLE dienst (
 D_key varchar(5) PRIMARY KEY,
-Namen varchar(20) NOT NULL);
+Name varchar(20) NOT NULL);
 
 CREATE TABLE server (
 S_key varchar(5) PRIMARY KEY,
-Namen varchar(20) NOT NULL);
+Name varchar(20) NOT NULL);
 
 CREATE TABLE meldung (
 Me_key varchar(10) PRIMARY KEY,
@@ -41,3 +41,16 @@ Foreign Key (D_key) References dienst(D_key),
 Foreign Key (S_key) References server(S_key),
 qeued_id varchar(10),
 Zeit timestamp);
+
+INSERT INTO server VALUES("1", "test");
+
+DELIMITER $$
+CREATE FUNCTION getServer(IN server)
+BEGIN
+	DECLARE k varchar(5);
+	k = (SELECT S_key FROM Server WHERE Name = server);
+	RETURN k;
+END $$
+
+
+DELIMITER ;
