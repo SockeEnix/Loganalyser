@@ -45,12 +45,19 @@ Zeit timestamp);
 INSERT INTO server VALUES("1", "test");
 
 DELIMITER $$
-CREATE FUNCTION getServer(IN server)
+CREATE Procedure getServer(var VARCHAR(20))
 BEGIN
-	DECLARE k varchar(5);
-	k = (SELECT S_key FROM Server WHERE Name = server);
-	RETURN k;
+	SELECT S_key FROM server WHERE Name = var LIMIT 1;
 END $$
 
+CREATE Procedure getDienst(var VARCHAR(20))
+BEGIN
+	SELECT D_key FROM dienst WHERE Name = var LIMIT 1;
+END $$
+
+CREATE Procedure getMeldung(var text)
+BEGIN
+	SELECT Me_key FROM meldung WHERE Text = var LIMIT 1;
+END $$
 
 DELIMITER ;
