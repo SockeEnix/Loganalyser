@@ -101,7 +101,7 @@ BEGIN
 	INSERT INTO M_Me_D_S VALUES(M, Me, D, S, qeued,_time);
 END $$
 
-CREATE Procedure setMail(MA SMALLINT, kb DOUBLE, hit DOUBLE, absend VARCHAR(50), empfang)
+CREATE Procedure setMail(MA SMALLINT, kb DOUBLE, hit DOUBLE, absend VARCHAR(50), empfang VARCHAR(50))
 BEGIN
 	INSERT INTO mail(MA_key, KBytes, Hit_Points, Absender, Empfaenger) VALUES(MA, kb, hit, absend, empfang);
 END
