@@ -1,0 +1,17 @@
+Nov 6 02:56:03 forelle postfix/smtpd[9032]: connect from hecht.fischteich[10.0.1.10]!
+Nov 6 02:56:03 forelle postfix/smtpd[9032]: 8992A20883: client=hecht.fischteich[10.0.1.10]!
+Nov 6 02:56:03 forelle postfix/cleanup[9035]: 8992A20883: message-
+id=<20141106002819.E3BC72013E@hecht.fischteich>!
+Nov 6 02:56:03 forelle postfix/qmgr[1389]: 8992A20883: from=<fail2ban@huwiiii.de>, size=2721,
+nrcpt=1 (queue active)!
+Nov 6 02:56:03 forelle postfix/smtpd[9032]: disconnect from hecht.fischteich[10.0.1.10]!
+Nov 6 02:56:06 forelle amavis[6261]: (06261-10) Passed CLEAN {RelayedInternal}, LOCAL
+[10.0.1.10]:33429 [10.0.1.10] <fail2ban@huwiiii.de> -> <admin@lists.strandsalz.de>, Queue-ID:
+8992A20883, Message-ID: <20141106002819.E3BC72013E@hecht.fischteich>, mail_id:
+woCpQMfr4xLO, Hits: -2.899, size: 2721, queued_as: 128BA22DD2, 2641 ms!
+Nov 6 02:56:06 forelle postfix/smtp[9036]: 8992A20883: to=<admin@lists.strandsalz.de>,
+orig_to=<admin@huwiiii.de>, relay=127.0.0.1[127.0.0.1]:10024, delay=2.7, delays=0.06/0/0/2.6,
+dsn=2.0.0, status=sent (250 2.0.0 from MTA(smtp:[dorsch.fischteich]:10025): 250 2.0.0 Ok:
+queued as 128BA22DD2)!
+Nov 6 02:56:06 forelle postfix/qmgr[1389]: 8992A20883: removed!
+
