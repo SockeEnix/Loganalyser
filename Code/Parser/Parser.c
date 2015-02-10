@@ -2,14 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-#include <mysql.h>
+#include <mysql/mysql.h>
 #include <sys/types.h>
 #include <dirent.h>
 
 MYSQL *conn;
 
 void connect();
-void cmbStr(char *str1, char *str2);
+char* cmbStr(char *str1, char *str2);
 
 void analyze(char line[255]){
 	char *timestamp;
@@ -19,16 +19,17 @@ void analyze(char line[255]){
         //http://www.c-howto.de/tutorial-strings-zeichenketten-stringfunktionen-zerteilen-strtok.html
 }
 
-int main(int argc, char *argv[]){
+int main(void){
 	
-	DIR *dir 
+	DIR *dir;
 	struct dirent *dirpnt;
-	File *file1, *file2;
-	char readline[255];
+	FILE *file1, *file2;
+	char readline[255], delimiter[] =" ";
+	//char *ptr;
 	bool readable = false;
 	
 	//Verzeichnis öffnen
-	if((dir=opendir(argv[1])) == NULL){
+	if(dir=opendir("/home/johannes/C/Parser/Logfiles/log2.log") == NULL){
 	fprintf(stderr,"Fehler beim öffnen\n");
 	exit(1);
 	}	
@@ -38,8 +39,8 @@ int main(int argc, char *argv[]){
 		file1=fopen((*dirpnt).d_name,"r");
 		//werte Zeilenweise aus
 		while(fgets(readline, 255, file1)){
-			//fputs(255, stdout);
-
+			//fputs(&readline[255], stdout);
+			printf("%s\n",readline[255]);
 
 
 		//Zeile verwertbar?
@@ -50,8 +51,10 @@ int main(int argc, char *argv[]){
 		}
 					
 	}
-	if(closedir(dir) == -1)
+	if(closedir(dir) == -1){
 		printf("Fehler beim Schließen\n");
+	}
+	printf("Hi");
 	return 0;
 }
 
