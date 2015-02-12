@@ -26,35 +26,37 @@ int main(void){
 	FILE *file1, *file2;
 	char readline[255], delimiter[] =" ";
 	//char *ptr;
-	bool readable = false;
+	bool readable = true;
 	
 	//Verzeichnis öffnen
-	if(dir=opendir("/home/johannes/C/Parser/Logfiles/log2.log") == NULL){
+	if((dir=opendir("/home/johannes/C/Parser/Logfiles")) == NULL){
 	fprintf(stderr,"Fehler beim öffnen\n");
 	exit(1);
 	}	
 
 	//Verzeichnis auslesen
-	while(dirpnt=readdir(dir) != NULL){
-		file1=fopen((*dirpnt).d_name,"r");
+	while((dirpnt=readdir(dir)) != NULL){
+		//printf("%s\n",(*dirpnt).d_name);
+		if(file1==NULL){
+			printf("Keine Logfiles vorhanden\n");
+			exit(1);
+		}
 		//werte Zeilenweise aus
 		while(fgets(readline, 255, file1)){
-			//fputs(&readline[255], stdout);
-			printf("%s\n",readline[255]);
-
+			fputs(readline, stdout);
+			printf("%s\n",readline);
+		
 
 		//Zeile verwertbar?
 		if(!readable){
-			file2=fopen("/home/user/C/Parser/unreadable/test.txt","w");
-			//fputs(255, file2);		
+			file2=fopen("/home/johannes/C/Parser/unreadable/test.txt","w");
+			//fputs(&readline[255], file2);		
 		}
 		}
-					
 	}
 	if(closedir(dir) == -1){
 		printf("Fehler beim Schließen\n");
 	}
-	printf("Hi");
 	return 0;
 }
 
